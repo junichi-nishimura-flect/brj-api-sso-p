@@ -1,0 +1,28 @@
+# Auth0のdeployワークフロー（本番環境）
+
+name: Auth0 deploy production
+
+# ワークフローの実行タイミング
+on:
+  # tagのpushイベント。
+  push:
+    tags:
+      - v[0-9]+\.[0-9]+\.[0-9]+*
+
+  # Actions tabからワークフローを手動で実行可能とする
+  workflow_dispatch:
+# ジョブ
+jobs:
+  # deployジョブ
+  deploy:
+    # ジョブを実行するランナー
+    runs-on: ubuntu-latest
+
+    # ステップ
+    steps:
+      - name: コミットをチェックアウトする
+        uses: actions/checkout@v2
+
+      - name: nodeライブラリをインストールする
+        run: echo 'Hello'
+

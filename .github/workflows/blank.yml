@@ -17,11 +17,7 @@ on:
 # ジョブ
 jobs:
   # deployジョブ
-  deploy:
-    # 承認プロセス
-    environment:
-      name: Staging
-      
+  deploy:      
     # ジョブを実行するランナー
     runs-on: ubuntu-latest
 

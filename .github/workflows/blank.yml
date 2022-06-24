@@ -1,0 +1,37 @@
+# deployワークフロー（stg環境）
+
+name: SSO-Service deploy stg
+
+# ワークフローの実行タイミング
+on:
+  # tagのpushイベント。
+  push:
+    tags:
+      # タグは「stg_v9.9.9{任意の文字列}」形式
+      # 使用できる正規表現は以下のURLを参照
+      # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#filter-pattern-cheat-sheet
+      - stg_v[0-9]+\.[0-9]+\.[0-9]+*
+
+  # Actions tabからワークフローを手動で実行可能とする
+  workflow_dispatch:
+# ジョブ
+jobs:
+  # deployジョブ
+  deploy:
+    # 承認プロセス
+    environment:
+      name: Staging
+      
+    # ジョブを実行するランナー
+    runs-on: ubuntu-latest
+
+    # ステップ
+    steps:
+      - name: リポジトリをチェックアウトする
+        uses: actions/checkout@v2
+
+      - name: 確認
+        run:  |
+          echo 'Hello'
+          pwd
+

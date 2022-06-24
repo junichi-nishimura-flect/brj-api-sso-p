@@ -3,7 +3,7 @@ name: 'Deploy01'
 on:
   push:
     tags:
-      - 'v*'
+      - v*
 
 jobs:
   deploy:
